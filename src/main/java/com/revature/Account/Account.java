@@ -3,8 +3,7 @@ package com.revature.Account;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Account implements AccountInterface, Serializable{
-    private static final long serialVersionUID = 1L;
+public class Account implements AccountInterface{
     private int accountID;
     private BigDecimal balance;
     private short pin;
@@ -15,12 +14,13 @@ public class Account implements AccountInterface, Serializable{
 
     public Account () {}
 
-    public Account(int accountID, String firstName, String lastName, String address) {
+    public Account(int accountID, BigDecimal balance, short pin, String firstName, String lastName, String address) {
         this.accountID = accountID;
+        this.balance = balance;
+        this.pin = pin;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.balance = new BigDecimal("0");
     }
 
     public int getAccountID() {
@@ -109,5 +109,10 @@ public class Account implements AccountInterface, Serializable{
             System.out.println("Cannot deposit a negative number: "+amount);
         }
         
+    }
+
+    public String getString() {
+        String accountInfo = this.accountID + ":" + balance.toString() + ":" + this.pin + ":" + this.firstName + ":" + this.lastName+ ":" + address;
+        return accountInfo;
     }
 }

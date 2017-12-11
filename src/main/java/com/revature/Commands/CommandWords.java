@@ -9,8 +9,9 @@ public class CommandWords {
     private Set<String> validCommands = new HashSet<String>();
 
     public CommandWords() {
+        validCommands.add("help");
         validCommands.add("open");
-        validCommands.add("access");
+        validCommands.add("login");
         validCommands.add("deposit");
         validCommands.add("withdraw");
         validCommands.add("quit");
