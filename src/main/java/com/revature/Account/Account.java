@@ -7,6 +7,7 @@ public class Account implements AccountInterface{
     private String firstName;
     private String lastName;
     private String address;
+    private boolean isLocked;
 
     public Account () {}
 
@@ -64,7 +65,23 @@ public class Account implements AccountInterface{
         this.address = address;
     }
 
+    public boolean getIsLocked() {
+        return this.isLocked;
+    }
+
+    public void setIsLocked(boolean lock) {
+        this.isLocked = lock;
+    }
+
     public void withdraw(int amount) {
+        if (amount > 0) {
+            this.balance = this.balance - amount;
+
+            System.out.println("Your new balance is: "+balance);
+        }
+        else {
+            System.out.println("Cannot withdraw a negative number: "+amount);
+        }
 
     }
 

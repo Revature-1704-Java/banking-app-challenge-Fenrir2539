@@ -16,5 +16,7 @@ public interface AccountInterface {
     public void setAddress(String address);
     public void withdraw(int amount);
     public void deposit(int amount);
+    public boolean getIsLocked();
+    public void setIsLocked(boolean lock);
 
 }
