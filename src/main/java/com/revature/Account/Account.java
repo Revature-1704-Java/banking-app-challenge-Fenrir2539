@@ -1,8 +1,12 @@
 package com.revature.Account;
 
-public class Account implements AccountInterface{
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+public class Account implements AccountInterface, Serializable{
+    private static final long serialVersionUID = 1L;
     private int accountID;
-    private int balance;
+    private BigDecimal balance;
     private short pin;
     private String firstName;
     private String lastName;
@@ -11,10 +15,12 @@ public class Account implements AccountInterface{
 
     public Account () {}
 
-    public Account(String firstName, String lastName, String address) {
+    public Account(int accountID, String firstName, String lastName, String address) {
+        this.accountID = accountID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.balance = new BigDecimal("0");
     }
 
     public int getAccountID() {
@@ -25,11 +31,11 @@ public class Account implements AccountInterface{
         this.accountID = accountID;
     }
 
-    public int getBalance() {
+    public BigDecimal getBalance() {
         return this.balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -73,10 +79,11 @@ public class Account implements AccountInterface{
         this.isLocked = lock;
     }
 
-    public void withdraw(int amount) {
-        if (amount > 0) {
-            this.balance = this.balance - amount;
-            if (balance <= 0) {
+    public void withdraw(BigDecimal amount) {
+        BigDecimal zero = new BigDecimal("0");
+        if (amount.compareTo(zero) == 1) {
+            this.balance = this.balance.subtract(amount);
+            if (this.balance .compareTo(zero) != 1) {
                 this.isLocked = true;
                 System.out.println("You have overdrawn your account! It is now locked");
                 System.out.println("Prepare for FEEEEEESS!!!!!");
@@ -88,10 +95,15 @@ public class Account implements AccountInterface{
         }
     }
 
-    public void deposit(int amount) {
-        if (amount > 0) {
-            this.balance = this.balance + amount;
+    public void deposit(BigDecimal amount) {
+        BigDecimal zero = new BigDecimal("0");
+        if (amount.compareTo(zero) == 1) {
+            this.balance = this.balance.add(amount);
             System.out.println("Your new balance is: "+balance);
+            if (amount.compareTo(zero) == 1) {
+                this.isLocked = false;
+                System.out.println("Account balance is positive. It is now unlocked");
+            }
         }
         else {
             System.out.println("Cannot deposit a negative number: "+amount);

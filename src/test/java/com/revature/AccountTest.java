@@ -4,6 +4,9 @@ import org.junit.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import static org.junit.Assert.*;
+
+import java.math.BigDecimal;
+
 import com.revature.Account.Account;
 
 /**
@@ -13,7 +16,7 @@ public class AccountTest extends TestCase
 {
     @Test
     public void testConstructor() {
-        Account a = new Account("Alex", "Swanson", "123 Fake St.");
+        Account a = new Account(1, "Alex", "Swanson", "123 Fake St.");
         assertEquals("Alex", a.getFirstName());
         assertEquals("Swanson", a.getLastName());
         assertEquals("123 Fake St.", a.getAddress());
@@ -21,20 +24,21 @@ public class AccountTest extends TestCase
 
     @Test
     public void testWithdraw() {
-        Account a = new Account("Alex", "Swanson", "123 Fake St.");
-        a.setBalance(100);
-        assertEquals(100, a.getBalance());
-        a.withdraw(50);
-        assertEquals(50, a.getBalance());
-        a.withdraw(50);
-        assertEquals(0, a.getBalance());
+        Account a = new Account(1, "Alex", "Swanson", "123 Fake St.");
+        BigDecimal aHundredDollars = new BigDecimal("100.00");
+        BigDecimal fiftyDollars = new BigDecimal("50.00");
+        a.setBalance(aHundredDollars);
+        assertEquals(aHundredDollars, a.getBalance());
+        a.withdraw(fiftyDollars);
+        assertEquals(0, fiftyDollars.compareTo(a.getBalance()));
     }
 
     @Test
     public void testDeposit() {
-        Account a = new Account("Alex", "Swanson", "123 Fake St.");
-        a.deposit(55);
-        assertEquals(55, a.getBalance());
+        Account a = new Account(1, "Alex", "Swanson", "123 Fake St.");
+        BigDecimal fiftyDollars = new BigDecimal("50.00");
+        a.deposit(fiftyDollars);
+        assertEquals(0, fiftyDollars.compareTo(a.getBalance()));
     }
 
 }

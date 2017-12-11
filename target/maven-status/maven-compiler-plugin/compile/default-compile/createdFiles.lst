@@ -1,3 +1,7 @@
+com\revature\Parser\Parser.class
 com\revature\Account\Account.class
 com\revature\App.class
+com\revature\Commands\CommandWords.class
+com\revature\FileIO\FileIO.class
 com\revature\Account\AccountInterface.class
+com\revature\Commands\Command.class
