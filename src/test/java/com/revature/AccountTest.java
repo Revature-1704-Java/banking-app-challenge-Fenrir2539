@@ -19,10 +19,9 @@ public class AccountTest extends TestCase
         assertTrue(true);
     }
     
-    /*
     @Test
     public void testConstructor() {
-        Account a = new Account(1, "Alex", "Swanson", "123 Fake St.");
+        Account a = new Account(1, new BigDecimal("0"), (short) 7777, "Alex", "Swanson", "123 Fake St.");
         assertEquals("Alex", a.getFirstName());
         assertEquals("Swanson", a.getLastName());
         assertEquals("123 Fake St.", a.getAddress());
@@ -30,7 +29,7 @@ public class AccountTest extends TestCase
 
     @Test
     public void testWithdraw() {
-        Account a = new Account(1, "Alex", "Swanson", "123 Fake St.");
+        Account a = new Account(1, new BigDecimal("0"), (short) 7777, "Alex", "Swanson", "123 Fake St.");
         BigDecimal aHundredDollars = new BigDecimal("100.00");
         BigDecimal fiftyDollars = new BigDecimal("50.00");
         a.setBalance(aHundredDollars);
@@ -41,11 +40,10 @@ public class AccountTest extends TestCase
 
     @Test
     public void testDeposit() {
-        Account a = new Account(1, "Alex", "Swanson", "123 Fake St.");
+        Account a = new Account(1, new BigDecimal("0"), (short) 7777, "Alex", "Swanson", "123 Fake St.");
         BigDecimal fiftyDollars = new BigDecimal("50.00");
         a.deposit(fiftyDollars);
         assertEquals(0, fiftyDollars.compareTo(a.getBalance()));
     }
-    */
 
 }
