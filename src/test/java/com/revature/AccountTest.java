@@ -29,4 +29,12 @@ public class AccountTest extends TestCase
         a.withdraw(50);
         assertEquals(0, a.getBalance());
     }
+
+    @Test
+    public void testDeposit() {
+        Account a = new Account("Alex", "Swanson", "123 Fake St.");
+        a.deposit(55);
+        assertEquals(55, a.getBalance());
+    }
+
 }

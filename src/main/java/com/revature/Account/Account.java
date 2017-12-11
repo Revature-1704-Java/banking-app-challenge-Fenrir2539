@@ -79,17 +79,23 @@ public class Account implements AccountInterface{
             if (balance <= 0) {
                 this.isLocked = true;
                 System.out.println("You have overdrawn your account! It is now locked");
-                System.out.println("Prepare for FEESSSSSS!!!!!");
+                System.out.println("Prepare for FEEEEEESS!!!!!");
             }
             System.out.println("Your new balance is: "+balance);
         }
         else {
             System.out.println("Cannot withdraw a negative number: "+amount);
         }
-
     }
 
     public void deposit(int amount) {
+        if (amount > 0) {
+            this.balance = this.balance + amount;
+            System.out.println("Your new balance is: "+balance);
+        }
+        else {
+            System.out.println("Cannot deposit a negative number: "+amount);
+        }
         
     }
 }
