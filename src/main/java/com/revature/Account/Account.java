@@ -76,7 +76,11 @@ public class Account implements AccountInterface{
     public void withdraw(int amount) {
         if (amount > 0) {
             this.balance = this.balance - amount;
-
+            if (balance <= 0) {
+                this.isLocked = true;
+                System.out.println("You have overdrawn your account! It is now locked");
+                System.out.println("Prepare for FEESSSSSS!!!!!");
+            }
             System.out.println("Your new balance is: "+balance);
         }
         else {
